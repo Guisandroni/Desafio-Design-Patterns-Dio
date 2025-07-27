@@ -6,17 +6,19 @@ import jakarta.persistence.*;
 @Entity
 @Table(name= "animal")
 public class Animal {
-    private final Tutor Tutor;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
     private String name;
     private String race;
+
+    @Enumerated(EnumType.STRING)
     private Gender gender;
     private int age;
     private double weight;
     @ManyToOne
     @JoinColumn(name = "tutor_id")
+
     private Tutor tutor;
 
 
@@ -28,12 +30,12 @@ public class Animal {
         this.age = age;
         this.weight = weight;
         this.gender = gender;
-        this.Tutor=tutor;
+        this.tutor=tutor;
     }
 
-    public Animal(Tutor tutor) {
+    public Animal() {
 
-        Tutor = tutor;
+
     }
     public long getTutor() {
         return Id;
